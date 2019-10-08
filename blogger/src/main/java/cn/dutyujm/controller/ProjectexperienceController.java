@@ -19,7 +19,6 @@ public class ProjectexperienceController {
     @Autowired
     private ProjectexperienceService projectexperienceService;
 
-
     /**
      * 项目经历标题
      * @return
@@ -29,7 +28,6 @@ public class ProjectexperienceController {
         public List<Projectexperience> me(){
         return projectexperienceService.getTitle();
     }
-
 
     /**
      * 项目经历
@@ -42,7 +40,6 @@ public class ProjectexperienceController {
         return projectexperienceService.selectByPrimaryKey(pid);
     }
 
-
     /**
      * 增加项目经历
      * @return
@@ -52,7 +49,6 @@ public class ProjectexperienceController {
     public Integer insertExperience(@RequestBody Projectexperience projectexperience){
         return projectexperienceService.insertExperience(projectexperience);
     }
-
 
     /**
      * 修改项目经历
@@ -64,7 +60,6 @@ public class ProjectexperienceController {
     public  Integer update(@RequestBody Projectexperience projectexperience){
         return  projectexperienceService.updateByPrimaryKey(projectexperience);
     }
-
 
     /**
      * 删除项目经历
