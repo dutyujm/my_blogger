@@ -1,0 +1,7 @@
+# Project exclude paths
+/blogger/target/
+/client/target/
+/config-server/target/
+/eureka-server/target/
+/eureka-server-cluster/target/
+/out/

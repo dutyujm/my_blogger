@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="zuul" />
+        <module name="eureka-server" />
+        <module name="eureka-server-cluster" />
+        <module name="bloggerclient" />
+        <module name="config-server" />
+        <module name="feign" />
+        <module name="blogger" />
+        <module name="myzuul" />
+        <module name="client" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="blogger-client" target="1.8" />
+      <module name="blogger_zuul" target="1.8" />
+      <module name="bloggerclient" target="1.8" />
+      <module name="feign" target="1.8" />
+      <module name="myzuul" target="1.8" />
+      <module name="nacos_config" target="1.8" />
+      <module name="spring-cloud-gateway" target="1.8" />
+      <module name="zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="blogger" options="-parameters" />
+      <module name="blogger-client" options="-parameters" />
+      <module name="blogger_zuul" options="-parameters" />
+      <module name="bloggerclient" options="-parameters" />
+      <module name="client" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="eureka-server-cluster" options="-parameters" />
+      <module name="feign" options="-parameters" />
+      <module name="myzuul" options="-parameters" />
+      <module name="nacos_config" options="-parameters" />
+      <module name="spring-cloud-gateway" options="-parameters" />
+      <module name="zuul" options="-parameters" />
+    </option>
+  </component>
+</project>

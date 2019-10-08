@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.dutyujm.mapper.ProjectpictureMapper" >
+  <resultMap id="BaseResultMap" type="cn.dutyujm.pojo.Projectpicture" >
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="getPicture" resultMap="BaseResultMap">
+    select *
+    from projectPicture
+    where pid = #{pid}
+  </select>
+  <insert id="insert" parameterType="cn.dutyujm.pojo.Projectpicture" >
+    insert into projectPicture (pid, url)
+    values (#{pid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.dutyujm.pojo.Projectpicture" >
+    insert into projectPicture
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <insert id="insertProjectpicture">
+
+    insert into projectPicture(pid,url) VALUES
+    <foreach collection="projectpictures" item="item" index="index" separator=",">
+      (#{item.pid},#{item.url})
+    </foreach>
+
+  </insert>
+
+
+  <delete id="delete"  >
+    delete from projectPicture
+    where pid = #{pid,jdbcType=INTEGER} and url = #{url}
+  </delete>
+
+
+
+</mapper>

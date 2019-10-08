@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.dutyujm.mapper.DifficultiesMapper" >
+  <resultMap id="BaseResultMap" type="cn.dutyujm.pojo.Difficulties" >
+    <id column="did" property="did" jdbcType="INTEGER" />
+    <result column="problem" property="problem" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.dutyujm.pojo.Difficulties" extends="BaseResultMap" >
+    <result column="solution" property="solution" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    did, problem, pid
+  </sql>
+  <sql id="Blob_Column_List" >
+    solution
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from difficulties
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+
+  <select id="getDifficulties" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from difficulties
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from difficulties
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.dutyujm.pojo.Difficulties" >
+    insert into difficulties (did, problem, pid, 
+      solution)
+    values (#{did,jdbcType=INTEGER}, #{problem,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
+      #{solution,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.dutyujm.pojo.Difficulties" >
+    insert into difficulties
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="problem != null" >
+        problem,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="solution != null" >
+        solution,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="problem != null" >
+        #{problem,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="solution != null" >
+        #{solution,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.dutyujm.pojo.Difficulties" >
+    update difficulties
+    <set >
+      <if test="problem != null" >
+        problem = #{problem,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="solution != null" >
+        solution = #{solution,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.dutyujm.pojo.Difficulties" >
+    update difficulties
+    set problem = #{problem,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=INTEGER},
+      solution = #{solution,jdbcType=LONGVARCHAR}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.dutyujm.pojo.Difficulties" >
+    update difficulties
+    set problem = #{problem,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=INTEGER}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+</mapper>

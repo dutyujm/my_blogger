@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.dutyujm.mapper.ProjectexperienceMapper" >
+  <resultMap id="BaseResultMap" type="cn.dutyujm.pojo.Projectexperience" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="projectName" property="projectname" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="technology" property="technology" jdbcType="VARCHAR" />
+    <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
+    <result column="myWork" property="mywork" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pid, projectName, url, endTime, startTime, technology, synopsis, myWork
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from projectExperience
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="getTitle" resultMap="BaseResultMap">
+    select
+    pid, projectName, url, endTime, startTime
+    from projectExperience
+  </select>
+<delete id="delete">
+          delete from projectExperience
+    where pid = #{pid,jdbcType=INTEGER};
+          delete from projectPicture
+    where pid = #{pid,jdbcType=INTEGER};
+          delete from technology
+    where pid = #{pid,jdbcType=INTEGER};
+</delete>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from projectExperience
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.dutyujm.pojo.Projectexperience" >
+      <selectKey keyProperty="pid" order="AFTER" resultType="java.lang.Integer">
+          select LAST_INSERT_ID()
+      </selectKey>
+    insert into projectExperience (pid, projectName, url, 
+      endTime, startTime, technology, 
+      synopsis, myWork)
+    values (#{pid,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{starttime,jdbcType=TIMESTAMP}, #{technology,jdbcType=VARCHAR}, 
+      #{synopsis,jdbcType=VARCHAR}, #{mywork,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.dutyujm.pojo.Projectexperience" >
+    insert into projectExperience
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="projectname != null" >
+        projectName,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+      <if test="starttime != null" >
+        startTime,
+      </if>
+      <if test="technology != null" >
+        technology,
+      </if>
+      <if test="synopsis != null" >
+        synopsis,
+      </if>
+      <if test="mywork != null" >
+        myWork,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="technology != null" >
+        #{technology,jdbcType=VARCHAR},
+      </if>
+      <if test="synopsis != null" >
+        #{synopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="mywork != null" >
+        #{mywork,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.dutyujm.pojo.Projectexperience" >
+    update projectExperience
+    <set >
+      <if test="projectname != null" >
+        projectName = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starttime != null" >
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="technology != null" >
+        technology = #{technology,jdbcType=VARCHAR},
+      </if>
+      <if test="synopsis != null" >
+        synopsis = #{synopsis,jdbcType=VARCHAR},
+      </if>
+      <if test="mywork != null" >
+        myWork = #{mywork,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.dutyujm.pojo.Projectexperience" >
+    update projectExperience
+    set projectName = #{projectname,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      technology = #{technology,jdbcType=VARCHAR},
+      synopsis = #{synopsis,jdbcType=VARCHAR},
+      myWork = #{mywork,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

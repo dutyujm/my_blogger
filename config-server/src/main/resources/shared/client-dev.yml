@@ -1,0 +1,21 @@
+server:
+  port: 8030
+foo: foo version 1
+spring:
+  application:
+    name: myclient
+  thymeleaf:
+    prefix: classpath:/static/
+    suffix: .html
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/,http://slaveone:8762/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+feign:
+  httpclient:
+    enabled: true
+  hystrix:
+    enabled: true
