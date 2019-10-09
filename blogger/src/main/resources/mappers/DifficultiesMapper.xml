@@ -106,7 +106,8 @@
   <update id="updateByPrimaryKey" parameterType="cn.dutyujm.pojo.Difficulties" >
     update difficulties
     set problem = #{problem,jdbcType=VARCHAR},
-      pid = #{pid,jdbcType=INTEGER}
+      pid = #{pid,jdbcType=INTEGER},
+      solution = #{solution}
     where did = #{did,jdbcType=INTEGER}
   </update>
 </mapper>

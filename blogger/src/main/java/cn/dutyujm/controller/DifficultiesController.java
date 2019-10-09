@@ -43,6 +43,7 @@ public class DifficultiesController {
     @ApiOperation("修改 难点")
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public Integer update(@RequestBody Difficulties Difficulties){
+        System.out.println(Difficulties.getSolution());
             return  difficultiesService.updateByPrimaryKey(Difficulties);
     }
 

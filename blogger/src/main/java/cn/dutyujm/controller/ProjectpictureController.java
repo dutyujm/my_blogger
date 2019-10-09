@@ -43,9 +43,6 @@ public class ProjectpictureController {
     }
 
 
-
-
-
     /**
      * 删除项目图片
      * @return

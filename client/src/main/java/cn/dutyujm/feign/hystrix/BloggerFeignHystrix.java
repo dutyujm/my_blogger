@@ -44,6 +44,11 @@ public class BloggerFeignHystrix implements BloggerFeign {
     }
 
     @Override
+    public Integer deleteDifficulties(Integer did) {
+        return null;
+    }
+
+    @Override
     public List<Notes> getNotes() {
         return null;
     }
