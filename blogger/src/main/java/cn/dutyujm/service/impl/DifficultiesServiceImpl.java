@@ -48,4 +48,9 @@ public class DifficultiesServiceImpl  implements DifficultiesService {
     public List<Difficulties> getDifficulties(Integer pid) {
         return  difficultiesMapper.getDifficulties(pid);
     }
+
+    @Override
+    public Integer deleteDifficulties(Integer did) {
+        return difficultiesMapper.deleteDifficulties(did);
+    }
 }

@@ -21,6 +21,7 @@ public interface DifficultiesMapper {
 
     List<Difficulties> getDifficulties(Integer pid);
 
+    Integer deleteDifficulties(Integer did);
 
 
 }

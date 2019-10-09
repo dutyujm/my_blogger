@@ -39,6 +39,7 @@
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server-cluster" options="-parameters" />
       <module name="feign" options="-parameters" />
+      <module name="my_blogger" options="-parameters" />
       <module name="myzuul" options="-parameters" />
       <module name="nacos_config" options="-parameters" />
       <module name="spring-cloud-gateway" options="-parameters" />

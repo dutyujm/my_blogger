@@ -61,6 +61,18 @@ public class BloggerController {
     public Integer insertDifficulty(@RequestBody  List<Difficulties> difficultiesList){
       return bloggerFeign.insertDifficulty(difficultiesList);
     }
+
+    /**
+     * 删除难点
+     * @param did
+     * @return
+     */
+    @RequestMapping(value = "/Difficulties/deleteDifficulties" ,method = RequestMethod.POST)
+    public Integer deleteDifficulties(@RequestParam("did")Integer did ){
+        return bloggerFeign.deleteDifficulties(did);
+    }
+
+
     /**
      * 得到前五个笔记
      * @return

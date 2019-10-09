@@ -61,4 +61,22 @@ public class DifficultiesController {
             return 1;
     }
 
+
+    /**
+     * 删除难点
+     * @param did
+     * @return
+     */
+    @ApiOperation("删除 难点")
+    @RequestMapping(value = "/deleteDifficulties" ,method = RequestMethod.POST)
+    public Integer deleteDifficulties(@ApiParam("难点id")@RequestParam("did")Integer did ){
+
+        return difficultiesService.deleteDifficulties(did);
+
+
+    }
+
+
+
+
 }

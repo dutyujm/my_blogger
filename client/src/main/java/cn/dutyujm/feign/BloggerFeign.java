@@ -49,6 +49,17 @@ public interface BloggerFeign {
     public Integer insertDifficulty(@RequestBody  List<Difficulties> difficultiesList);
 
     /**
+     * 删除难点
+     * @param did
+     * @return
+     */
+    @RequestMapping(value = "/Difficulties/deleteDifficulties" ,method = RequestMethod.POST)
+    public Integer deleteDifficulties(@RequestParam("did")Integer did );
+
+
+
+
+    /**
      * 得到前五个笔记
      * @return
      */

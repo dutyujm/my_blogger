@@ -24,6 +24,11 @@
     where did = #{did,jdbcType=INTEGER}
   </select>
 
+  <delete id="deleteDifficulties">
+     delete from difficulties
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+
   <select id="getDifficulties" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

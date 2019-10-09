@@ -18,4 +18,5 @@ public interface DifficultiesService {
 
     int updateByPrimaryKey(Difficulties record);
     List<Difficulties> getDifficulties(Integer pid);
+    Integer deleteDifficulties(Integer did);
 }
