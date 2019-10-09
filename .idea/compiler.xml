@@ -10,9 +10,9 @@
         <module name="eureka-server" />
         <module name="eureka-server-cluster" />
         <module name="bloggerclient" />
-        <module name="config-server" />
         <module name="feign" />
         <module name="blogger" />
+        <module name="config-server" />
         <module name="myzuul" />
         <module name="client" />
       </profile>

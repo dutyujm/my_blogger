@@ -7,8 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
-@Data
 
+@Data
 public class Projectexperience {
     private Integer pid;
 
@@ -30,8 +30,9 @@ public class Projectexperience {
 
     private String technology;
 
-    private Integer synopsis;
+    private String synopsis;
 
     private String mywork;
+
 
 }
