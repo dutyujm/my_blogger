@@ -1,17 +1,26 @@
 package cn.dutyujm.feign;
 
 
+import cn.dutyujm.config.FeignMultipartSupportConfig;
+import cn.dutyujm.config.FileFeignConfig;
+import cn.dutyujm.config.MultipartSupportConfig;
 import cn.dutyujm.pojo.*;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import cn.dutyujm.feign.hystrix.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import feign.codec.Encoder;
+import feign.form.spring.SpringFormEncoder;
+
+import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
 @FeignClient(value = "blogger", fallback = BloggerFeignHystrix.class)
 public interface BloggerFeign {
@@ -228,6 +237,73 @@ public interface BloggerFeign {
     @RequestMapping(value = "/Technology/delete",method = RequestMethod.DELETE)
     public Integer deleteTechnology( @RequestParam("pid")Integer pid
             ,  @RequestParam("keyWord")String keyWord);
+
+
+
+
+
+    /**
+     * 通过pid获取图片
+     * @param pid
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/getPicture",method = RequestMethod.GET)
+    public List<Projectpicture> getPicture( @RequestParam("pid")Integer pid);
+
+
+    /**
+     * 增加项目图片
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/insertProjectpicture",method = RequestMethod.POST)
+    public Integer insertProjectpicture(@RequestBody List<Projectpicture> projectpictures);
+
+    /**
+     * 增加一张项目图片
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/insertOneProjectpicture",method = RequestMethod.POST)
+    public Integer insertOneProjectpicture(@RequestBody Projectpicture projectpicture);
+
+
+
+    /**
+     * 删除项目图片
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/delete",method = RequestMethod.POST)
+    public Integer deleteProjectpicture(  @RequestParam("pid") Integer pid ,@RequestParam("url") String url);
+
+
+    /**
+     * 删除项目图片
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/deleteBybody",method = RequestMethod.POST)
+    public Integer deleteProjectpictureBybody(@RequestBody Projectpicture projectpicture);
+    /**
+     * 图片上传接口
+     * @param file
+     * @param pid
+     * @return
+     */
+    @RequestMapping(value="/Projectpicture/testuploadimg", method = RequestMethod.POST)
+    public  String testuploadimg(@RequestParam("file") MultipartFile file, @RequestParam("pid") Integer pid);
+
+    /**
+     *  图片上传接口（正式）
+     * @param file
+     * @param pid
+     * @return
+     * @throws IOException
+     */
+//    @RequestMapping(value="/Projectpicture/uploadImg",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE}, method = RequestMethod.POST)
+    @PostMapping(value = "/Projectpicture/uploadImg",consumes = MULTIPART_FORM_DATA_VALUE)
+     String uploadImg(@RequestPart(value = "file") MultipartFile file, @RequestParam("pid") Integer pid) throws IOException ;
+
+
+
+
 
 
 

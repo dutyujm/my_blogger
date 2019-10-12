@@ -4,8 +4,12 @@ import cn.dutyujm.feign.BloggerFeign;
 import cn.dutyujm.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -268,5 +272,83 @@ public class BloggerController {
             ,  @RequestParam("keyWord")String keyWord){
         return  bloggerFeign.deleteTechnology(pid,keyWord);
     }
+
+
+
+
+
+    /**
+     * 通过pid获取图片
+     * @param pid
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/getPicture",method = RequestMethod.GET)
+    public List<Projectpicture> getPicture( @RequestParam("pid")Integer pid){
+        return bloggerFeign.getPicture(pid);
+
+    }
+
+
+    /**
+     * 增加项目图片
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/insertProjectpicture",method = RequestMethod.POST)
+    public Integer insertProjectpicture(@RequestBody List<Projectpicture> projectpictures){
+        return bloggerFeign.insertProjectpicture(projectpictures);
+    }
+
+    /**
+     * 增加一张项目图片
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/insertOneProjectpicture",method = RequestMethod.POST)
+    public Integer insertOneProjectpicture(@RequestBody Projectpicture projectpicture){
+        return bloggerFeign.insertOneProjectpicture(projectpicture);
+    }
+
+
+
+    /**
+     * 删除项目图片
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/delete",method = RequestMethod.POST)
+    public Integer deleteProjectpicture(  @RequestParam("pid") Integer pid ,@RequestParam("url") String url){
+        return bloggerFeign.deleteProjectpicture(pid,url);
+    }
+
+
+    /**
+     * 删除项目图片
+     * @return
+     */
+    @RequestMapping(value = "/Projectpicture/deleteBybody",method = RequestMethod.POST)
+    public Integer deleteProjectpictureBybody(@RequestBody Projectpicture projectpicture){
+        return bloggerFeign.deleteProjectpictureBybody(projectpicture);
+    }
+    /**
+     * 图片上传接口
+     * @param file
+     * @param pid
+     * @return
+     */
+    @RequestMapping(value="/Projectpicture/testuploadimg", method = RequestMethod.POST)
+    public  String testuploadimg(@RequestParam("file") MultipartFile file,@RequestParam("pid") Integer pid) {
+       return bloggerFeign.testuploadimg(file,pid);
+    }
+
+    /**
+     *  图片上传接口（正式）
+     * @param file
+     * @param pid
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value="/Projectpicture/uploadImg",method = RequestMethod.POST,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uploadImg(@RequestPart(value = "file") MultipartFile file, @RequestParam("pid") Integer pid) throws IOException {
+        return   bloggerFeign.uploadImg(file, pid);
+    }
+
 
 }

@@ -16,4 +16,6 @@ public interface ProjectpictureMapper {
 
     int delete(Integer pid ,String url);
 
+    int deleteBybody(Projectpicture projectpicture);
+
 }

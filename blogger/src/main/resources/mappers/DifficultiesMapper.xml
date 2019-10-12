@@ -9,12 +9,15 @@
   <resultMap id="ResultMapWithBLOBs" type="cn.dutyujm.pojo.Difficulties" extends="BaseResultMap" >
     <result column="solution" property="solution" jdbcType="LONGVARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     did, problem, pid
   </sql>
+
   <sql id="Blob_Column_List" >
     solution
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -38,18 +41,18 @@
     where pid = #{pid,jdbcType=INTEGER}
   </select>
 
-
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from difficulties
     where did = #{did,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="cn.dutyujm.pojo.Difficulties" >
     insert into difficulties (did, problem, pid, 
       solution)
     values (#{did,jdbcType=INTEGER}, #{problem,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
       #{solution,jdbcType=LONGVARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="cn.dutyujm.pojo.Difficulties" >
     insert into difficulties
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -81,6 +84,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="cn.dutyujm.pojo.Difficulties" >
     update difficulties
     <set >
@@ -96,6 +100,7 @@
     </set>
     where did = #{did,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.dutyujm.pojo.Difficulties" >
     update difficulties
     set problem = #{problem,jdbcType=VARCHAR},
@@ -103,6 +108,7 @@
       solution = #{solution,jdbcType=LONGVARCHAR}
     where did = #{did,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="cn.dutyujm.pojo.Difficulties" >
     update difficulties
     set problem = #{problem,jdbcType=VARCHAR},

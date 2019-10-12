@@ -4,7 +4,9 @@ import cn.dutyujm.feign.BloggerFeign;
 import cn.dutyujm.pojo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -20,7 +22,7 @@ public class BloggerFeignHystrix implements BloggerFeign {
 
     @Override
     public Integer updateMe(Aboutme aboutme) {
-        return 0;
+        return null;
     }
 
     @Override
@@ -35,7 +37,7 @@ public class BloggerFeignHystrix implements BloggerFeign {
 
     @Override
     public Integer updateDifficulties(Difficulties Difficulties) {
-        return 0;
+        return null;
     }
 
     @Override
@@ -60,7 +62,7 @@ public class BloggerFeignHystrix implements BloggerFeign {
 
     @Override
     public Integer insertNotes(Notes notes) {
-        return 0;
+        return null;
     }
 
     @Override
@@ -70,12 +72,12 @@ public class BloggerFeignHystrix implements BloggerFeign {
 
     @Override
     public Integer updateNotes(Notes notes) {
-        return 0;
+        return null;
     }
 
     @Override
     public Integer deleteNotes(Integer nid) {
-        return 0;
+        return null;
     }
 
     @Override
@@ -90,17 +92,17 @@ public class BloggerFeignHystrix implements BloggerFeign {
 
     @Override
     public Integer insertExperience(Projectexperience projectexperience) {
-        return 0;
+        return null;
     }
 
     @Override
     public Integer updateExperience(Projectexperience projectexperience) {
-        return 0;
+        return null;
     }
 
     @Override
     public Integer deleteExperience(Integer pid) {
-        return 0;
+        return null;
     }
 
     @Override
@@ -110,7 +112,7 @@ public class BloggerFeignHystrix implements BloggerFeign {
 
     @Override
     public Integer insertExperience(Schoolexperience schoolexperience) {
-        return 0;
+        return null;
     }
 
     @Override
@@ -120,12 +122,12 @@ public class BloggerFeignHystrix implements BloggerFeign {
 
     @Override
     public Integer updateSchoolexperience(Schoolexperience schoolexperience) {
-        return 0;
+        return null;
     }
 
     @Override
     public Integer deleteSchoolexperience(Integer eid) {
-        return 0;
+        return null;
     }
 
     @Override
@@ -135,11 +137,46 @@ public class BloggerFeignHystrix implements BloggerFeign {
 
     @Override
     public Integer insertTechnology(List<Technology> technologies) {
-        return 0;
+        return null;
     }
 
     @Override
     public Integer deleteTechnology(Integer pid, String keyWord) {
-        return 0;
+        return null;
+    }
+
+    @Override
+    public List<Projectpicture> getPicture(Integer pid) {
+        return null;
+    }
+
+    @Override
+    public Integer insertProjectpicture(List<Projectpicture> projectpictures) {
+        return null;
+    }
+
+    @Override
+    public Integer insertOneProjectpicture(Projectpicture projectpicture) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteProjectpicture(Integer pid, String url) {
+        return null;
+    }
+
+    @Override
+    public Integer deleteProjectpictureBybody(Projectpicture projectpicture) {
+        return null;
+    }
+
+    @Override
+    public String testuploadimg(MultipartFile file, Integer pid) {
+        return null;
+    }
+
+    @Override
+    public String uploadImg(MultipartFile file, Integer pid) throws IOException {
+        return null;
     }
 }

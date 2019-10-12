@@ -7,6 +7,8 @@ spring:
   thymeleaf:
     prefix: classpath:/static/
     suffix: .html
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:

@@ -3,19 +3,37 @@ package cn.dutyujm.service.impl;
 import cn.dutyujm.mapper.ProjectpictureMapper;
 import cn.dutyujm.pojo.Projectpicture;
 import cn.dutyujm.service.ProjectpictureService;
+import com.github.tobato.fastdfs.domain.MateData;
+import com.github.tobato.fastdfs.domain.StorePath;
+import com.github.tobato.fastdfs.service.FastFileStorageClient;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProjectpictureServiceImpl  implements ProjectpictureService {
     @Autowired
     private ProjectpictureMapper projectpictureMapper;
 
+    @Autowired
+    private FastFileStorageClient fastFileStorageClient;
+
+    @Value("${fdfs.reqHost}")
+    private String reqHost;
+
+    @Value("${fdfs.reqPort}")
+    private String reqPort;
+
     @Override
     public int insert(Projectpicture record) {
-        return 0;
+        return projectpictureMapper.insert(record);
     }
 
     @Override
@@ -36,6 +54,34 @@ public class ProjectpictureServiceImpl  implements ProjectpictureService {
     @Override
     public int delete(Integer pid, String url) {
         return projectpictureMapper.delete(pid,url);
+    }
+
+    @Override
+    public int deleteBybody(Projectpicture projectpicture) {
+        int tmpInt = projectpicture.getPid();
+        String tmpUrl =projectpicture.getUrl();
+
+        return projectpictureMapper.delete(tmpInt,tmpUrl);
+    }
+
+    @Override
+    public String uploadImg(MultipartFile file, Integer pid) throws IOException {
+        // 设置文件信息
+        Set<MateData> mataData = new HashSet<>();
+        mataData.add(new MateData("author", "yu"));
+        mataData.add(new MateData("description", "photo"));
+
+        // 上传   （文件上传可不填文件信息，填入null即可）
+        StorePath storePath = fastFileStorageClient.uploadFile(file.getInputStream(), file.getSize(), FilenameUtils.getExtension(file.getOriginalFilename()), mataData);
+        System.out.println(storePath.getFullPath());
+        Projectpicture projectpicture = new Projectpicture();
+        projectpicture.setUrl("http://"+reqHost+":"+reqPort+"/"+storePath.getFullPath());
+        projectpicture.setPid(pid);
+        if(projectpictureMapper.insert(projectpicture)>0){
+            return projectpicture.getUrl();
+        }else {
+            return "false";
+        }
     }
 
 

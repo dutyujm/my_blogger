@@ -11,6 +11,8 @@
 
     <artifactId>blogger</artifactId>
     <dependencies>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -25,6 +27,23 @@
             <version>2.0.2.RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
+
+<!--        <dependency>-->
+<!--            <groupId>com.github.tobato</groupId>-->
+<!--            <artifactId>fastdfs-client</artifactId>-->
+<!--            <version>1.26.1-RELEASE</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.github.tobato</groupId>
+            <artifactId>fastdfs-client</artifactId>
+            <version>1.26.1-RELEASE</version>
+        </dependency>
+
+
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -156,27 +175,27 @@
             <artifactId>httpmime</artifactId>
             <version>4.3.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-httpclient</artifactId>
-            <version>8.17.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-okhttp</artifactId>
-            <version>9.7.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.netflix.feign</groupId>-->
+<!--            <artifactId>feign-httpclient</artifactId>-->
+<!--            <version>8.17.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign</groupId>-->
+<!--            <artifactId>feign-okhttp</artifactId>-->
+<!--            <version>9.7.0</version>-->
+<!--        </dependency>-->
         <!--        <dependency>-->
         <!--            <groupId>io.github.openfeign</groupId>-->
         <!--            <artifactId>feign-core</artifactId>-->
         <!--            <version>9.5.0</version>-->
         <!--        </dependency>-->
 
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-slf4j</artifactId>
-            <version>9.5.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.github.openfeign</groupId>-->
+<!--            <artifactId>feign-slf4j</artifactId>-->
+<!--            <version>9.5.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -200,12 +219,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-openfeign-core</artifactId>
-            <version>2.0.2.RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-openfeign-core</artifactId>-->
+<!--            <version>2.0.2.RELEASE</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
