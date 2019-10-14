@@ -359,7 +359,6 @@ public class BloggerController {
     @RequestMapping(value = "/Bannerpictures/getBannerpictures",method = RequestMethod.GET)
     public List<Bannerpictures> getBannerpictures(@RequestParam(defaultValue = "5")Integer num){
         return  bloggerFeign.getBannerpictures(num);
-
     }
 
 

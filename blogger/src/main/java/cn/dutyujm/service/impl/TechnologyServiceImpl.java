@@ -37,4 +37,6 @@ public class TechnologyServiceImpl implements TechnologyService {
     public int  delete(Integer pid,String keyWord){
         return technologyMapper.delete(pid,keyWord);
     }
+
+
 }

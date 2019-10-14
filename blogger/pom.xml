@@ -274,7 +274,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <executable>true</executable>
-                    <mainClass>edu.dlut.thesismanage.ThesisManageApplication</mainClass>
+                    <mainClass>cn.dutyujm.BloggerApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>

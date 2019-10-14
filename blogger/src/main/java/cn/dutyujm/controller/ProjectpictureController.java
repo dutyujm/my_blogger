@@ -7,22 +7,17 @@ import cn.dutyujm.util.FileUtil;
 import com.github.tobato.fastdfs.domain.MateData;
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
-import com.sun.xml.internal.bind.v2.TODO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @CrossOrigin
 @RestController
@@ -133,8 +128,5 @@ public class ProjectpictureController {
     public String uploadImg(@ApiParam("图片")@RequestPart(value = "file") MultipartFile file,@ApiParam("项目id,格式formdata")@RequestParam("pid") Integer pid) throws IOException {
         return projectpictureService.uploadImg(file,pid);
     }
-
-
-
 
 }
