@@ -19,6 +19,7 @@
     <include refid="Base_Column_List" />
     from projectExperience
     where pid = #{pid,jdbcType=INTEGER}
+    ORDER BY pid DESC
   </select>
 
 
@@ -26,6 +27,7 @@
     select
     pid, projectName, url, endTime, startTime
     from projectExperience
+    ORDER BY pid DESC
   </select>
 <delete id="delete">
           delete from projectExperience

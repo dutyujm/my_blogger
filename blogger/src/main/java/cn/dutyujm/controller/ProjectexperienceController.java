@@ -35,7 +35,7 @@ public class ProjectexperienceController {
      * @return
      */
     @ApiOperation("获取某个 项目经历")
-        @RequestMapping(value = "/experienceDetail",method = RequestMethod.GET)
+    @RequestMapping(value = "/experienceDetail",method = RequestMethod.GET)
     public Projectexperience detail( @ApiParam("项目经历的pid") @RequestParam("pid")Integer pid){
         return projectexperienceService.selectByPrimaryKey(pid);
     }

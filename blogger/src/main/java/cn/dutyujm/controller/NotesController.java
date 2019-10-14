@@ -41,7 +41,7 @@ public class NotesController {
     @RequestMapping(value = "/allNotes",method = RequestMethod.GET)
     public List<Notes> getAllNotes(@ApiParam("模糊查询字段") @RequestParam(defaultValue = "") String title
             ,@ApiParam("页数") @RequestParam(defaultValue = "1") Integer page
-            ,@ApiParam("每页个数") @RequestParam(defaultValue = "10") Integer limit){
+            ,@ApiParam("每页个数") @RequestParam(defaultValue = "100") Integer limit){
         return notesService.getAllNotes(title,page,limit);
     }
 

@@ -22,7 +22,9 @@
     select
     <include refid="Base_Column_List" />
     from notes
+    order by nid desc
     limit 0,#{num}
+
   </select>
 
   <select id="getAllNotes" resultMap="BaseResultMap">
@@ -30,7 +32,9 @@
    nid, title, url, creatTime,points
     from notes
     where points like CONCAT('%',#{title},'%')
+    order by nid desc
     limit #{tmp},#{limit}
+
   </select>
 
 

@@ -302,7 +302,13 @@ public interface BloggerFeign {
      String uploadImg(@RequestPart(value = "file") MultipartFile file, @RequestParam("pid") Integer pid) throws IOException ;
 
 
-
+    /**
+     * banner图片获取接口
+     * @param num
+     * @return
+     */
+    @RequestMapping(value = "/Bannerpictures/getBannerpictures",method = RequestMethod.GET)
+     List<Bannerpictures> getBannerpictures(@RequestParam(defaultValue = "5") Integer num);
 
 
 

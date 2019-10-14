@@ -179,4 +179,14 @@ public class BloggerFeignHystrix implements BloggerFeign {
     public String uploadImg(MultipartFile file, Integer pid) throws IOException {
         return null;
     }
+
+    @Override
+    public List<Bannerpictures> getBannerpictures(Integer num) {
+        return null;
+    }
+
+//    @Override
+//    public List<Bannerpictures> getBannerpictures(Integer num) {
+//        return null;
+//    }
 }
