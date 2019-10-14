@@ -16,8 +16,7 @@ import org.springframework.context.annotation.Import;
 @EnableHystrixDashboard
 @EnableFeignClients
 
-public class ClientApplication {
-    public static void main(String[] args) {
+public class ClientApplication {    public static void main(String[] args) {
         SpringApplication.run(ClientApplication.class,args);
     }
 }
