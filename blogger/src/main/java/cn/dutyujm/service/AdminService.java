@@ -1,8 +1,11 @@
 package cn.dutyujm.service;
 
 import cn.dutyujm.pojo.Admin;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public interface AdminService {
+
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Admin record);
