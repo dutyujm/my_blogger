@@ -28,12 +28,7 @@
             <scope>compile</scope>
         </dependency>
 
-
-<!--        <dependency>-->
-<!--            <groupId>com.github.tobato</groupId>-->
-<!--            <artifactId>fastdfs-client</artifactId>-->
-<!--            <version>1.26.1-RELEASE</version>-->
-<!--        </dependency>-->
+<!--        fastdfs文件上传-->
 
         <dependency>
             <groupId>com.github.tobato</groupId>
@@ -62,6 +57,12 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -175,6 +176,18 @@
             <artifactId>httpmime</artifactId>
             <version>4.3.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!--mybatis-plus代码生成器 相关依赖-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.2.0</version>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.netflix.feign</groupId>-->
 <!--            <artifactId>feign-httpclient</artifactId>-->
@@ -257,6 +270,7 @@
             <artifactId>spring-security-core</artifactId>
         </dependency>
 
+
     </dependencies>
 
     <dependencyManagement>
@@ -272,6 +286,19 @@
     </dependencyManagement>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <!--指定资源的位置-->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -6,11 +6,13 @@ import cn.dutyujm.service.ProjectpictureService;
 import com.github.tobato.fastdfs.domain.MateData;
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
+import io.micrometer.core.instrument.util.StringUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import sun.security.jgss.HttpCaller;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -43,7 +45,11 @@ public class ProjectpictureServiceImpl  implements ProjectpictureService {
 
     @Override
     public List<Projectpicture> getPicture(Integer pid) {
-        return projectpictureMapper.getPicture(pid);
+        List<Projectpicture> projectpictureList = projectpictureMapper.getPicture(pid);
+        for (Projectpicture tmp : projectpictureList){
+            tmp.setUrl("http://"+reqHost+":"+reqPort+"/"+tmp.getUrl());
+        }
+        return projectpictureList;
     }
 
     @Override
@@ -58,9 +64,25 @@ public class ProjectpictureServiceImpl  implements ProjectpictureService {
 
     @Override
     public int deleteBybody(Projectpicture projectpicture) {
+
         int tmpInt = projectpicture.getPid();
         String tmpUrl =projectpicture.getUrl();
+        StorePath storePath =StorePath.praseFromUrl(tmpUrl);
 
+        if (StringUtils.isEmpty(tmpUrl)) {
+            return 0;
+        }
+        try {
+
+            fastFileStorageClient.deleteFile(tmpUrl);
+            System.out.println(storePath.getGroup());
+            System.out.println(storePath.getPath());
+
+            fastFileStorageClient.deleteFile(storePath.getGroup(), storePath.getPath());
+        } catch (Exception e) {
+
+        }
+        tmpUrl = storePath.getGroup()+"/"+storePath.getPath();
         return projectpictureMapper.delete(tmpInt,tmpUrl);
     }
 
@@ -75,10 +97,11 @@ public class ProjectpictureServiceImpl  implements ProjectpictureService {
         StorePath storePath = fastFileStorageClient.uploadFile(file.getInputStream(), file.getSize(), FilenameUtils.getExtension(file.getOriginalFilename()), mataData);
         System.out.println(storePath.getFullPath());
         Projectpicture projectpicture = new Projectpicture();
-        projectpicture.setUrl("http://"+reqHost+":"+reqPort+"/"+storePath.getFullPath());
+//        projectpicture.setUrl("http://"+reqHost+":"+reqPort+"/"+storePath.getFullPath());
+        projectpicture.setUrl(storePath.getFullPath());
         projectpicture.setPid(pid);
         if(projectpictureMapper.insert(projectpicture)>0){
-            return projectpicture.getUrl();
+            return "http://"+reqHost+":"+reqPort+"/"+storePath.getFullPath();
         }else {
             return "false";
         }

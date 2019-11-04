@@ -125,7 +125,7 @@ public class ProjectpictureController {
      */
     @ApiOperation("上传项目图片(正式)")
     @RequestMapping(value="/uploadImg", method = RequestMethod.POST)
-    public String uploadImg(@ApiParam("图片")@RequestPart(value = "file") MultipartFile file,@ApiParam("项目id,格式formdata")@RequestParam("pid") Integer pid) throws IOException {
+    public String uploadImg(@ApiParam("图片")@RequestPart(value = "file") MultipartFile file,@ApiParam("项目id")@RequestParam("pid") Integer pid) throws IOException {
         return projectpictureService.uploadImg(file,pid);
     }
 

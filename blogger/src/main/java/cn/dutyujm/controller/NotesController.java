@@ -1,5 +1,6 @@
 package cn.dutyujm.controller;
 
+import cn.dutyujm.config.AjaxResponse;
 import cn.dutyujm.pojo.Notes;
 import cn.dutyujm.service.NotesService;
 import io.swagger.annotations.Api;
@@ -8,6 +9,8 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Null;
 import java.util.Date;
 import java.util.List;
 
@@ -91,6 +94,9 @@ public class NotesController {
         return  notesService.deleteByPrimaryKey(nid);
 
     }
+
+
+
 
 
 

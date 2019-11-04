@@ -22,7 +22,6 @@
     ORDER BY pid DESC
   </select>
 
-
   <select id="getTitle" resultMap="BaseResultMap">
     select
     pid, projectName, url, endTime, startTime

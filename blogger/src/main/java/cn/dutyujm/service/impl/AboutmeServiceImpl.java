@@ -31,4 +31,9 @@ public class AboutmeServiceImpl implements AboutmeService {
     public int update(Aboutme record) {
         return aboutmeMapper.update(record);
     }
+
+    @Override
+    public Object test() {
+        return aboutmeMapper.selectList(null);
+    }
 }

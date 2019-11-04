@@ -8,5 +8,5 @@ public interface AboutmeService {
     int insertSelective(Aboutme record);
     Aboutme getMe();
     int update(Aboutme record);
-
+    Object test();
 }

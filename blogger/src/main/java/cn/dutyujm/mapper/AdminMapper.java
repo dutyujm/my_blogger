@@ -1,8 +1,12 @@
 package cn.dutyujm.mapper;
 
 import cn.dutyujm.pojo.Admin;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Component;
 
-public interface AdminMapper {
+@Component
+
+public interface AdminMapper extends BaseMapper<Admin> {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Admin record);

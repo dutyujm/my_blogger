@@ -3,7 +3,9 @@ package cn.dutyujm.service;
 import cn.dutyujm.pojo.Admin;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-public interface AdminService {
+import java.util.List;
+
+public interface AdminService   {
 
 
     int deleteByPrimaryKey(Integer id);
@@ -19,4 +21,6 @@ public interface AdminService {
     int updateByPrimaryKey(Admin record);
 
     boolean login(String username,String password);
+
+    List<Admin> test();
 }

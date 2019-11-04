@@ -1,8 +1,9 @@
 package cn.dutyujm.mapper;
 
 import cn.dutyujm.pojo.Aboutme;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface AboutmeMapper {
+public interface AboutmeMapper extends BaseMapper<Aboutme> {
     int deleteByPrimaryKey(String name);
 
     int insert(Aboutme record);
@@ -15,7 +16,7 @@ public interface AboutmeMapper {
 
     int updateByPrimaryKey(Aboutme record);
 
-
     Aboutme getMe();
+
     int update(Aboutme record);
 }

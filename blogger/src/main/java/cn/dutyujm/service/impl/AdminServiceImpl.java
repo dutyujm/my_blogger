@@ -5,9 +5,12 @@ import cn.dutyujm.pojo.Aboutme;
 import cn.dutyujm.pojo.Admin;
 import cn.dutyujm.service.AboutmeService;
 import cn.dutyujm.service.AdminService;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 
@@ -72,5 +75,10 @@ public class AdminServiceImpl  implements AdminService {
 
         }
         return false;
+    }
+
+    @Override
+    public List<Admin> test() {
+        return adminMapper.selectList(null);
     }
 }

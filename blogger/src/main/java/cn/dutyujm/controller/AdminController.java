@@ -1,5 +1,6 @@
 package cn.dutyujm.controller;
 
+import cn.dutyujm.config.AjaxResponse;
 import cn.dutyujm.pojo.Admin;
 import cn.dutyujm.service.AboutmeService;
 import cn.dutyujm.service.AdminService;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/Admin")
+    @RequestMapping("/Admin")
 @Api(tags = "Admin-Controller", description = "后台登录API ！！！！！！！！！！！！！！！不要看错了！！！！！！！！！！！！！！！！")
 
 public class AdminController {
@@ -33,6 +34,14 @@ public class AdminController {
         admin.setPassword(password);
         admin.setUsername(username);
         return  adminService.insert(admin);
+    }
+
+
+
+    @GetMapping(value = "/test")
+    public AjaxResponse test(){
+        return AjaxResponse.success(adminService.test());
+
     }
 
 }
